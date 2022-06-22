@@ -1,37 +1,66 @@
-## Welcome to GitHub Pages
+#  discord-anticrash
+  <p>
+    <a href="https://www.npmjs.com/package/discord-anticrash"><img src="https://img.shields.io/npm/v/discord-anticrash" alt="NPM version" /></a>
+    <a href="https://www.npmjs.com/package/discord-anticrash"><img src="https://img.shields.io/npm/dt/discord-anticrash" alt="NPM downloads" /></a>
+    <a href="https://www.npmjs.com/package/discord-anticrash"><img src="https://img.shields.io/snyk/vulnerabilities/npm/discord-anticrash?color=success&label=package%20vulnerabilities&logo=snyk&logoColor=red" alt="djs.captcha" /></a>
 
-You can use the [editor on GitHub](https://github.com/norbsdev/discord-anticrash/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+  </p>
+  <p>
+    <a href="https://www.npmjs.com/package/discord-anticrash"><img src="https://nodei.co/npm/discord-anticrash.png?downloads=true&stars=true" alt="NPM Banner"></a>
+  </p>
+  
+## What is this? and how do I use it?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Discord-antiCrash is a npm package that helps prevent bot termination due to Uncaught/Unhandled errors made by your code. 
 
-### Markdown
+You can use it by simply doing the steps below.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+>### Requirements
+  `NodeJS`: 16.6.0 and up (for DiscordJS v13)
+  <br></br>
+`DiscordJS`: v13.8.0 (for v13) v12.5.3 (for v12)
 
-```markdown
-Syntax highlighted code block
+>### Installation
 
-# Header 1
-## Header 2
-### Header 3
+`npm i discord-anticrash@latest`
+If you do not have discordjs, read below:
 
-- Bulleted
-- List
+for v13 `npm i discord.js@13.8.0` <br></br>
+for v12 `npm i discord.js@13.8.0`
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+>### Type this in your main file
+```js
+const antiCrash = require('discord-anticrash')
+const noCrashing = new antiCrash(client, {
+  enableAntiCrash: 'true/false'
+});
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+>### Examples
+#### The discord.js v12 Example
+```js
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const antiCrash = require('discord-anticrash')
 
-### Jekyll Themes
+const noCrash = new antiCrash(client, {
+  enableAntiCrash: 'true'
+});
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/norbsdev/discord-anticrash/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+client.login("token")
+```
+#### The discord.js v13 example
+```js
+const Discord = require("discord.js");
+const client = new Discord.Client(
+{intents:
+[/**your intents*/]
+});
+const antiCrash = require('discord-anticrash')
 
-### Support or Contact
+const noCrash = new antiCrash(client, {
+  enableAntiCrash: 'true'
+});
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+client.login("token")
+```
